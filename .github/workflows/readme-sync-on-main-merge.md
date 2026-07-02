@@ -18,8 +18,6 @@ engine:
   env:
     COPILOT_PROVIDER_BASE_URL: https://aipoc-foundry-openai.openai.azure.com/openai/v1
     COPILOT_PROVIDER_API_KEY: ${{ secrets.FOUNDRY_API_KEY }}
-    COPILOT_PROVIDER_TYPE: azure
-    COPILOT_PROVIDER_MODEL_ID: self-learning-gpt-5.1-chat
     COPILOT_PROVIDER_WIRE_API: responses
 network:
   allowed:
