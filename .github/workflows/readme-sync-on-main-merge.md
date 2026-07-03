@@ -24,6 +24,8 @@ engine:
   #   type: github-oidc
   env:
     COPILOT_PROVIDER_BASE_URL: https://aipoc-foundry-openai.openai.azure.com/openai/v1
+    # Required in Copilot BYOK mode; keep aligned with engine.model/deployment.
+    COPILOT_MODEL: self-learning-gpt-5.1-chat
     COPILOT_PROVIDER_API_KEY: ${{ secrets.FOUNDRY_API_KEY }}
     COPILOT_PROVIDER_WIRE_API: responses
     # Optional bearer token alternative (takes precedence over API key).

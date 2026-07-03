@@ -55,6 +55,7 @@ This section is specifically for `.github/workflows/readme-sync-on-main-merge.md
 - `engine.id: copilot`
 - `engine.model: self-learning-gpt-5.1-chat`
 - `engine.env.COPILOT_PROVIDER_BASE_URL`
+- `engine.env.COPILOT_MODEL`
 - `engine.env.COPILOT_PROVIDER_API_KEY`
 - `engine.env.COPILOT_PROVIDER_WIRE_API: responses`
 - `network.allowed` with `defaults` and Azure hostname
@@ -86,6 +87,7 @@ engine:
   model: self-learning-gpt-5.1-chat
   env:
     COPILOT_PROVIDER_BASE_URL: https://aipoc-foundry-openai.openai.azure.com/openai/v1
+    COPILOT_MODEL: self-learning-gpt-5.1-chat
     COPILOT_PROVIDER_API_KEY: ${{ secrets.FOUNDRY_API_KEY }}
     COPILOT_PROVIDER_WIRE_API: responses
 
@@ -103,6 +105,7 @@ engine:
   model: self-learning-gpt-5.1-chat
   env:
     COPILOT_PROVIDER_BASE_URL: https://aipoc-foundry-openai.openai.azure.com/openai/v1
+    COPILOT_MODEL: self-learning-gpt-5.1-chat
     COPILOT_PROVIDER_API_KEY: ${{ secrets.FOUNDRY_API_KEY }}
     COPILOT_PROVIDER_WIRE_API: responses
     # COPILOT_PROVIDER_TYPE: azure
@@ -127,6 +130,7 @@ engine:
   model: self-learning-gpt-5.1-chat
   env:
     COPILOT_PROVIDER_BASE_URL: https://aipoc-foundry-openai.openai.azure.com/openai/v1
+    COPILOT_MODEL: self-learning-gpt-5.1-chat
     COPILOT_PROVIDER_BEARER_TOKEN: ${{ secrets.FOUNDRY_BEARER_TOKEN }}
     COPILOT_PROVIDER_WIRE_API: responses
 ```
@@ -146,13 +150,32 @@ engine:
     type: github-oidc
   env:
     COPILOT_PROVIDER_BASE_URL: https://aipoc-foundry-openai.openai.azure.com/openai/v1
+    COPILOT_MODEL: self-learning-gpt-5.1-chat
     COPILOT_PROVIDER_WIRE_API: responses
+```
+
+Codex engine variant for Azure/custom endpoint:
+
+```yaml
+engine:
+  id: codex
+  model: gpt-4o
+  env:
+    OPENAI_BASE_URL: https://my-azure-endpoint.openai.azure.com/openai/deployments/gpt-4o
+    OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+
+network:
+  allowed:
+    - github.com
+    - my-azure-endpoint.openai.azure.com
 ```
 
 ### Important rules
 
 - Do not edit `.lock.yml` manually; always compile after frontmatter changes.
+- For Copilot BYOK mode, set `COPILOT_PROVIDER_BASE_URL` and `COPILOT_MODEL`.
 - Use either `COPILOT_PROVIDER_API_KEY` or `COPILOT_PROVIDER_BEARER_TOKEN` unless intentionally preferring bearer token.
+- For Codex custom endpoint mode, use `OPENAI_BASE_URL` and `OPENAI_API_KEY` instead of `COPILOT_PROVIDER_*`.
 - Keep the Azure hostname in `network.allowed`.
 - With `/openai/v1` style, no `api-version` field is needed in this workflow config.
 
