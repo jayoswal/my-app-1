@@ -53,7 +53,7 @@ This section is specifically for `.github/workflows/readme-sync-on-main-merge.md
 ### Already present in that file
 
 - `engine.id: copilot`
-- `engine.model: gpt-5.3-codex`
+- `engine.model: self-learning-gpt-5.1-chat`
 - `engine.env.COPILOT_PROVIDER_BASE_URL`
 - `engine.env.COPILOT_MODEL`
 - `engine.env.COPILOT_PROVIDER_API_KEY`
@@ -84,10 +84,10 @@ Current API-key variant:
 ```yaml
 engine:
   id: copilot
-  model: gpt-5.3-codex
+  model: self-learning-gpt-5.1-chat
   env:
     COPILOT_PROVIDER_BASE_URL: https://aipoc-foundry-openai.openai.azure.com/openai/v1
-    COPILOT_MODEL: gpt-5.3-codex
+    COPILOT_MODEL: self-learning-gpt-5.1-chat
     COPILOT_PROVIDER_API_KEY: ${{ secrets.FOUNDRY_API_KEY }}
     COPILOT_PROVIDER_WIRE_API: responses
 
@@ -102,15 +102,15 @@ API key + advanced optional knobs:
 ```yaml
 engine:
   id: copilot
-  model: gpt-5.3-codex
+  model: self-learning-gpt-5.1-chat
   env:
     COPILOT_PROVIDER_BASE_URL: https://aipoc-foundry-openai.openai.azure.com/openai/v1
-    COPILOT_MODEL: gpt-5.3-codex
+    COPILOT_MODEL: self-learning-gpt-5.1-chat
     COPILOT_PROVIDER_API_KEY: ${{ secrets.FOUNDRY_API_KEY }}
     COPILOT_PROVIDER_WIRE_API: responses
     # COPILOT_PROVIDER_TYPE: azure
-    # COPILOT_PROVIDER_MODEL_ID: gpt-5.3-codex
-    # COPILOT_PROVIDER_WIRE_MODEL: gpt-5.3-codex
+    # COPILOT_PROVIDER_MODEL_ID: self-learning-gpt-5.1-chat
+    # COPILOT_PROVIDER_WIRE_MODEL: self-learning-gpt-5.1-chat
     # COPILOT_PROVIDER_MAX_PROMPT_TOKENS: "128000"
     # COPILOT_PROVIDER_MAX_OUTPUT_TOKENS: "4096"
     # GITHUB_COPILOT_BASE_URL: https://your-copilot-router.example.com
@@ -127,10 +127,10 @@ Bearer-token variant (instead of API key):
 ```yaml
 engine:
   id: copilot
-  model: gpt-5.3-codex
+  model: self-learning-gpt-5.1-chat
   env:
     COPILOT_PROVIDER_BASE_URL: https://aipoc-foundry-openai.openai.azure.com/openai/v1
-    COPILOT_MODEL: gpt-5.3-codex
+    COPILOT_MODEL: self-learning-gpt-5.1-chat
     COPILOT_PROVIDER_BEARER_TOKEN: ${{ secrets.FOUNDRY_BEARER_TOKEN }}
     COPILOT_PROVIDER_WIRE_API: responses
 ```
@@ -145,12 +145,12 @@ permissions:
 
 engine:
   id: copilot
-  model: gpt-5.3-codex
+  model: self-learning-gpt-5.1-chat
   auth:
     type: github-oidc
   env:
     COPILOT_PROVIDER_BASE_URL: https://aipoc-foundry-openai.openai.azure.com/openai/v1
-    COPILOT_MODEL: gpt-5.3-codex
+    COPILOT_MODEL: self-learning-gpt-5.1-chat
     COPILOT_PROVIDER_WIRE_API: responses
 ```
 
