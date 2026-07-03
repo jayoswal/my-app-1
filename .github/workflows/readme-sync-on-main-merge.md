@@ -16,7 +16,7 @@ if: ${{ github.event.pull_request.merged == true }}
 strict: true
 engine:
   id: copilot
-  model: self-learning-gpt-5.1-chat
+  model: gpt-5.1
   # Optional CLI arguments injected before prompt.
   # args: ["--add-dir", "/workspace", "--verbose"]
   # Optional OIDC auth mode. If enabled, omit COPILOT_PROVIDER_API_KEY.
@@ -25,7 +25,7 @@ engine:
   env:
     COPILOT_PROVIDER_BASE_URL: https://aipoc-foundry-openai.openai.azure.com/openai/v1
     # Required in Copilot BYOK mode; keep aligned with engine.model/deployment.
-    COPILOT_MODEL: self-learning-gpt-5.1-chat
+    COPILOT_MODEL: gpt-5.1
     COPILOT_PROVIDER_API_KEY: ${{ secrets.FOUNDRY_API_KEY }}
     COPILOT_PROVIDER_WIRE_API: responses
     # Optional bearer token alternative (takes precedence over API key).
@@ -33,9 +33,9 @@ engine:
     # Optional explicit provider type: openai (default), azure, anthropic.
     # COPILOT_PROVIDER_TYPE: azure
     # Optional wire model/deployment override when it differs from engine.model.
-    # COPILOT_PROVIDER_MODEL_ID: self-learning-gpt-5.1-chat
+    # COPILOT_PROVIDER_MODEL_ID: gpt-5.1
     # Optional alternative to COPILOT_PROVIDER_MODEL_ID.
-    # COPILOT_PROVIDER_WIRE_MODEL: self-learning-gpt-5.1-chat
+    # COPILOT_PROVIDER_WIRE_MODEL: gpt-5.1
     # Optional token limits.
     # COPILOT_PROVIDER_MAX_PROMPT_TOKENS: "128000"
     # COPILOT_PROVIDER_MAX_OUTPUT_TOKENS: "4096"
