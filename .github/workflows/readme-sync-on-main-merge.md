@@ -10,18 +10,40 @@ on:
 permissions:
   contents: read
   pull-requests: read
+  # Enable only for Entra/OIDC auth mode.
+  # id-token: write
 if: ${{ github.event.pull_request.merged == true }}
 strict: true
 engine:
   id: copilot
   model: self-learning-gpt-5.1-chat
+  # Optional CLI arguments injected before prompt.
+  # args: ["--add-dir", "/workspace", "--verbose"]
+  # Optional OIDC auth mode. If enabled, omit COPILOT_PROVIDER_API_KEY.
+  # auth:
+  #   type: github-oidc
   env:
     COPILOT_PROVIDER_BASE_URL: https://aipoc-foundry-openai.openai.azure.com/openai/v1
     COPILOT_PROVIDER_API_KEY: ${{ secrets.FOUNDRY_API_KEY }}
     COPILOT_PROVIDER_WIRE_API: responses
+    # Optional bearer token alternative (takes precedence over API key).
+    # COPILOT_PROVIDER_BEARER_TOKEN: ${{ secrets.FOUNDRY_BEARER_TOKEN }}
+    # Optional explicit provider type: openai (default), azure, anthropic.
+    COPILOT_PROVIDER_TYPE: azure
+    # Optional wire model/deployment override when it differs from engine.model.
+    COPILOT_PROVIDER_MODEL_ID: self-learning-gpt-5.1-chat
+    # Optional alternative to COPILOT_PROVIDER_MODEL_ID.
+    COPILOT_PROVIDER_WIRE_MODEL: self-learning-gpt-5.1-chat
+    # Optional token limits.
+    # COPILOT_PROVIDER_MAX_PROMPT_TOKENS: "128000"
+    # COPILOT_PROVIDER_MAX_OUTPUT_TOKENS: "4096"
+    # Optional fallback endpoint for Copilot API routing.
+    # If both this and engine.api-target are set, engine.api-target wins.
+    # GITHUB_COPILOT_BASE_URL: https://your-copilot-router.example.com
 network:
   allowed:
     - defaults
+    # Keep explicit provider hostname allow-listed for threat-detection and BYOK runs.
     - aipoc-foundry-openai.openai.azure.com
 tools:
   github:
