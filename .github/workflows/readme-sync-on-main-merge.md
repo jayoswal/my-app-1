@@ -16,37 +16,18 @@ if: ${{ github.event.pull_request.merged == true }}
 strict: true
 engine:
   id: copilot
-  model: gpt-5.1
+  version: latest
+  model: gpt-5.4-mini
   # Optional CLI arguments injected before prompt.
   # args: ["--add-dir", "/workspace", "--verbose"]
   # Optional OIDC auth mode. If enabled, omit COPILOT_PROVIDER_API_KEY.
   # auth:
   #   type: github-oidc
   env:
-    COPILOT_PROVIDER_BASE_URL: https://aipoc-foundry-openai.openai.azure.com/openai/v1
-    # Required in Copilot BYOK mode; keep aligned with engine.model/deployment.
-    COPILOT_MODEL: gpt-5.1
-    COPILOT_PROVIDER_API_KEY: ${{ secrets.FOUNDRY_API_KEY }}
-    COPILOT_PROVIDER_WIRE_API: responses
-    # Optional bearer token alternative (takes precedence over API key).
-    # COPILOT_PROVIDER_BEARER_TOKEN: ${{ secrets.FOUNDRY_BEARER_TOKEN }}
-    # Optional explicit provider type: openai (default), azure, anthropic.
-    # COPILOT_PROVIDER_TYPE: azure
-    # Optional wire model/deployment override when it differs from engine.model.
-    # COPILOT_PROVIDER_MODEL_ID: gpt-5.1
-    # Optional alternative to COPILOT_PROVIDER_MODEL_ID.
-    # COPILOT_PROVIDER_WIRE_MODEL: gpt-5.1
-    # Optional token limits.
-    # COPILOT_PROVIDER_MAX_PROMPT_TOKENS: "128000"
-    # COPILOT_PROVIDER_MAX_OUTPUT_TOKENS: "4096"
-    # Optional fallback endpoint for Copilot API routing.
-    # If both this and engine.api-target are set, engine.api-target wins.
-    # GITHUB_COPILOT_BASE_URL: https://your-copilot-router.example.com
+    COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
 network:
   allowed:
     - defaults
-    # Keep explicit provider hostname allow-listed for threat-detection and BYOK runs.
-    - aipoc-foundry-openai.openai.azure.com
 tools:
   github:
     mode: gh-proxy
