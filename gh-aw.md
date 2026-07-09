@@ -79,6 +79,7 @@ For custom endpoint fallback:
 
 ### Copy-paste variants for readme-sync-on-main-merge.md
 
+
 Current API-key variant:
 
 ```yaml
