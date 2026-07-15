@@ -15,6 +15,10 @@ tools:
   github:
     mode: gh-proxy
     toolsets: [default]
+network:
+  allowed:
+    - defaults
+    - github
 safe-outputs:
   create-pull-request:
     branch-prefix: "gh-aw/README-sync-"
