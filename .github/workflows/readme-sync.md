@@ -22,6 +22,7 @@ safe-outputs:
     base-branch: "main"
     allowed-files:
       - "README.md"
+    protected-files: allowed
     draft: false
     auto-close-issue: false
 ---
