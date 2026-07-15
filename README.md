@@ -50,3 +50,15 @@ curl -X GET http://localhost:8000/users
   {"id": 5, "name": "Eva Martinez", "email": "eva@example.com"}
 ]
 ```
+#### GET /users/{user_id}
+Returns a single user by ID, or 404 if not found.
+
+**Example Request**
+```bash
+curl -X GET http://localhost:8000/users/1
+```
+
+**Example Response**
+```json
+{"id": 1, "name": "Alice Johnson", "email": "alice@example.com"}
+```
