@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
 
 # Simple API used for health checks and service metadata.
 app = FastAPI(title="my-app-1 FastAPI App", version="1.0.0")
@@ -24,6 +25,11 @@ def version() -> dict[str, str]:
     return {"version": app.version}
 
 
+class UserCreate(BaseModel):
+    name: str
+    email: str
+
+
 # Returns the full list of in-memory users.
 @app.get("/users")
 def get_users() -> list[dict]:
@@ -37,3 +43,11 @@ def get_user(user_id: int) -> dict:
         if user["id"] == user_id:
             return user
     raise HTTPException(status_code=404, detail="User not found")
+
+
+# Creates a new user; duplicates are allowed.
+@app.post("/users", status_code=201)
+def create_user(body: UserCreate) -> dict:
+    new_user = {"id": _USERS[-1]["id"] + 1 if _USERS else 1, "name": body.name, "email": body.email}
+    _USERS.append(new_user)
+    return new_user
