@@ -62,3 +62,16 @@ curl -X GET http://localhost:8000/users/1
 ```json
 {"id": 1, "name": "Alice Johnson", "email": "alice@example.com"}
 ```
+
+#### POST /users
+Creates a new user and returns the created user object.
+
+**Example Request**
+```bash
+curl -X POST http://localhost:8000/users -H "Content-Type: application/json" -d '{"name": "Frank Lee", "email": "frank@example.com"}'
+```
+
+**Example Response**
+```json
+{"id": 6, "name": "Frank Lee", "email": "frank@example.com"}
+```
