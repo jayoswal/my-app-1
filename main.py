@@ -6,7 +6,7 @@ app = FastAPI(title="my-app-1 FastAPI App", version="1.0.0")
 
 _USERS = [
     {"id": 1, "name": "Alice Johnson", "email": "alice@example.com"},
-    {"id": 2, "name": "Bob Smith",     "email": "bob@example.com"},
+    {"id": 2, "name": "Bob",     "email": "bob@example.com"},
     {"id": 3, "name": "Carol White",   "email": "carol@example.com"},
     {"id": 4, "name": "David Brown",   "email": "david@example.com"},
     {"id": 5, "name": "Eva Martinez",  "email": "eva@example.com"},
