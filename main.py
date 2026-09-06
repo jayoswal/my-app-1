@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel
 
 # Simple API used for health checks and service metadata.
@@ -15,8 +15,8 @@ _USERS = [
 
 # Liveness-style endpoint for quick monitoring checks.
 @app.get("/health")
-def health() -> dict[str, str]:
-    return {"status": "ok"}
+def health(request: Request) -> dict[str, object]:
+    return {"status": "ok", "headers": dict(request.headers)}
 
 
 # Exposes the API version configured on the FastAPI app object.
